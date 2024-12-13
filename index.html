@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 20px;
+    }
+    .calculator {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .calculator input[type="text"] {
+      width: 200px;
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    .calculator button {
+      width: 50px;
+      padding: 10px;
+      font-size: 16px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    .discord-link {
+      margin-top: 20px;
+    }
+    .discord-link a {
+      text-decoration: none;
+      color: #5865F2;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Calculator</h1>
+  <div class="calculator">
+    <input type="text" id="result" placeholder="0" readonly>
+    <br>
+    <button onclick="appendNumber(7)">7</button>
+    <button onclick="appendNumber(8)">8</button>
+    <button onclick="appendNumber(9)">9</button>
+    <button onclick="clearResult()">C</button>
+    <br>
+    <button onclick="appendNumber(4)">4</button>
+    <button onclick="appendNumber(5)">5</button>
+    <button onclick="appendNumber(6)">6</button>
+    <button onclick="appendOperator('+')">+</button>
+    <br>
+    <button onclick="appendNumber(1)">1</button>
+    <button onclick="appendNumber(2)">2</button>
+    <button onclick="appendNumber(3)">3</button>
+    <button onclick="appendOperator('-')">-</button>
+    <br>
+    <button onclick="appendNumber(0)">0</button>
+    <button onclick="appendOperator('*')">*</button>
+    <button onclick="appendOperator('/')">/</button>
+    <button onclick="calculateResult()">=</button>
+  </div>
+  <div class="discord-link">
+    <p>Join our Discord: <a href="https://discord.gg/sTQan4CBGd" target="_blank">Click Here</a></p>
+  </div>
+  <script>
+    let currentInput = "";
+
+    function appendNumber(number) {
+      currentInput += number;
+      updateResult();
+    }
+
+    function appendOperator(operator) {
+      currentInput += operator;
+      updateResult();
+    }
+
+    function clearResult() {
+      currentInput = "";
+      updateResult();
+    }
+
+    function calculateResult() {
+      try {
+        currentInput = eval(currentInput).toString();
+      } catch (error) {
+        currentInput = "Error";
+      }
+      updateResult();
+    }
+
+    function updateResult() {
+      document.getElementById("result").value = currentInput;
+    }
+  </script>
+</body>
+</html>
